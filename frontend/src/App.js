@@ -31,10 +31,12 @@ function App() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
+    const onKeyDown = (event) => event.key === "Escape" && setMenuOpen(false);
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("keydown", onKeyDown);
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("visible")), { threshold: 0.12 });
     document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
-    return () => { window.removeEventListener("scroll", onScroll); observer.disconnect(); };
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("keydown", onKeyDown); observer.disconnect(); };
   }, []);
 
   const goTo = (id) => { document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" }); setMenuOpen(false); };
