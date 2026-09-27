@@ -45,7 +45,7 @@ function App() {
 
   return <div className="site-shell">
     <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`} data-testid="site-navbar">
-      <button className="brand" onClick={() => goTo("hero")} data-testid="brand-home-button">Ishan <span>H D</span></button>
+      <button className="brand" onClick={() => goTo("hero")} data-testid="brand-home-button"><span>I</span>shan <span>H D</span></button>
       <nav className={menuOpen ? "nav-links open" : "nav-links"} aria-label="Primary navigation">
         {navItems.map((item, index) => <button key={item} className="nav-link" onClick={() => goTo(item)} data-testid={`nav-${item.toLowerCase()}-link`}><small>0{index + 1}</small>{item}</button>)}
         <button className="nav-resume" onClick={() => goTo("contact")} data-testid="nav-contact-cta">Let’s talk <ArrowUpRight size={15} /></button>
